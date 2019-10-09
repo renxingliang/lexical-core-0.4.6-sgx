@@ -161,6 +161,7 @@ pub(crate) use std::*;
 #[cfg(not(feature = "std"))]
 pub(crate) use core::*;
 
+/*
 cfg_if! {
 if #[cfg(all(feature = "correct", feature = "radix"))] {
     #[cfg(feature = "std")]
@@ -169,7 +170,7 @@ if #[cfg(all(feature = "correct", feature = "radix"))] {
     #[cfg(not(feature = "std"))]
     pub(crate) use alloc::vec::Vec;
 }}  // cfg_if
-
+*/
 }   // lib
 
 // PANIC
@@ -207,16 +208,16 @@ mod ftoa;
 mod itoa;
 
 // Publicly re-export the low-level string-to-float functions.
-pub use atof::*;
+pub use crate::atof::*;
 
 // Publicly re-export the low-level string-to-integer functions.
-pub use atoi::*;
+pub use crate::atoi::*;
 
 // Publicly re-export the low-level float-to-string functions.
-pub use ftoa::*;
+pub use crate::ftoa::*;
 
 // Publicly re-export the low-level integer-to-string functions.
-pub use itoa::*;
+pub use crate::itoa::*;
 
 // Re-export configuration and utilities globally.
-pub use util::*;
+pub use crate::util::*;

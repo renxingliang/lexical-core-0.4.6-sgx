@@ -23,6 +23,8 @@ keywords = ["parsing", "lexical", "encoding", "no_std"]
 categories = ["parsing", "encoding", "no-std"]
 license = "MIT/Apache-2.0"
 repository = "https://github.com/Alexhuszagh/rust-lexical/tree/master/lexical-core"
+edition = "2018"
+
 [profile.dev]
 opt-level = 0
 lto = false
@@ -37,17 +39,15 @@ debug-assertions = false
 panic = "abort"
 
 [lib]
-crate-type = ["lib", "staticlib", "cdylib"]
+crate-type = ["rlib"]
+#crate-type = ["lib", "staticlib", "cdylib"]
 
 [dependencies]
-sgx_tstd    = {rev = "v1.0.9", get = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
-cfg-if = "0.1.9"
+sgx_tstd    = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
+cfg-if      = "0.1.9"
 static_assertions = "0.3.3"
-# Use arrayvec for the correct parser.
-arrayvec    = {git = "https://github.com/renxingliang/arrayvec-sgx.git", optional = true, features = ["array-sizes-33-128"] }
-# Optimized Grisu3 implementation, a well-tested, correct algorithm.
-dtoa        = { version = "0.4", optional = true }
-# Optimized Ryu implementation, the fastest correct algorithm.
+arrayvec    = { git = "https://github.com/renxingliang/arrayvec-sgx.git", optional = true, features = ["array-sizes-33-128"] }
+dtoa        = { git = "https://github.com/renxingliang/dtoa-sgx.git", optional = true }
 ryu         = { version = "1.0", optional = true }
 
 [dev-dependencies.approx]
@@ -62,12 +62,14 @@ version = "0.8.5"
 version = "0.2"
 
 [features]
+default = ["mesalock_sgx", "correct", "ryu", "std"]
+mesalock_sgx = ["std", "sgx_tstd"]
+std = ["mesalock_sgx"]
+
 correct = ["arrayvec", "table"]
-default = ["correct", "ryu", "std"]
 grisu3 = ["dtoa"]
 radix = []
 rounding = []
-std = []
 table = []
 trim_floats = []
 unchecked_index = []
