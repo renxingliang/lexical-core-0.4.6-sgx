@@ -208,16 +208,16 @@ mod ftoa;
 mod itoa;
 
 // Publicly re-export the low-level string-to-float functions.
-pub use crate::atof::*;
+pub use atof::*;
 
 // Publicly re-export the low-level string-to-integer functions.
-pub use crate::atoi::*;
+pub use atoi::*;
 
 // Publicly re-export the low-level float-to-string functions.
-pub use crate::ftoa::*;
+pub use ftoa::*;
 
 // Publicly re-export the low-level integer-to-string functions.
-pub use crate::itoa::*;
+pub use itoa::*;
 
 // Re-export configuration and utilities globally.
-pub use crate::util::*;
+pub use util::*;
