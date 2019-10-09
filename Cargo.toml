@@ -42,7 +42,7 @@ panic = "abort"
 crate-type = ["lib", "staticlib", "cdylib"]
 
 [dependencies]
-sgx_tstd    = {rev = "v1.0.9", get = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
+sgx_tstd    = {rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 cfg-if = "0.1.9"
 static_assertions = "0.3.3"
 # Use arrayvec for the correct parser.
